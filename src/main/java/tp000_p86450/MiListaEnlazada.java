@@ -9,36 +9,33 @@ public class MiListaEnlazada {
 	}	
 	
 	public int getSize() {
-		// TODO Auto-generated method stub
 		return this.size;
 	}
 	
 	public void addObjectToEnd(Object item) {
-		// TODO Auto-generated method stub
-		try {addNextObject(this.primero.getNext(), this.primero, item, this.size++);} catch (Exception e) {addFirstObject(item, this.size++);}
-	}
-	
-	private void addNextObject(Nodo nextNodo, Nodo currentNodo, Object item, int newSizeList) {
-		try {addNextObject(nextNodo.getNext(), nextNodo, item, newSizeList);} catch (Exception e) {currentNodo.setNext(new Nodo(item));}
-	}
-	
-	private void addFirstObject(Object item, int newSizeList) {
-		// TODO Auto-generated method stub
-		this.primero = new Nodo(item);
+		// Agrega el item indicado al final de la lista enlazada, 
+		// recorriendo recursivamente la misma,
+		// si esta vacia lo asigna al primer elemento.
+		try {assignNextObject(this.primero.getNext(), this.primero, item, this.size++);}
+		catch (Exception e) {assignFirstNodo(new Nodo(item), this.size++);}
 	}
 	
 	public Object getFirstObject() {
-		// TODO Auto-generated method stub
-		try {return this.primero.getObject();} catch (Exception e) {throw new AssertionError("Queue Empty");}
+		try {return this.primero.getObject();} 
+		catch (Exception e) {throw new AssertionError("Queue Empty");}
 	}
 	
 	public void removeFirstObject() {
-		// TODO Auto-generated method stub
-		try {replaceFirstNodo(this.primero.getNext(), this.size--);} catch (Exception e) {throw new AssertionError("Queue Empty");}
+		try {assignFirstNodo(this.primero.getNext(), this.size--);} 
+		catch (Exception e) {throw new AssertionError("Queue Empty");}
 	}
 	
-	private void replaceFirstNodo(Nodo newFirstNodo, int newSizeList) {
-		// TODO Auto-generated method stub
+	private void assignNextObject(Nodo nextNodo, Nodo currentNodo, Object item, int newSizeList) {
+		try {assignNextObject(nextNodo.getNext(), nextNodo, item, newSizeList);} 
+		catch (Exception e) {currentNodo.setNext(new Nodo(item));}
+	}
+	
+	private void assignFirstNodo(Nodo newFirstNodo, int newSizeList) {
 		this.primero = newFirstNodo;
 	}
 }

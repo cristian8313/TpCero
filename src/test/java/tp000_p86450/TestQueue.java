@@ -71,7 +71,7 @@ public class TestQueue {
 	@Test (expected=AssertionError.class)
 	public void testRemoveObjectEmptyQueue() {
 		Queue miQueue = new MiQueue();		
-		miQueue.remove();		
+		miQueue.remove();
 	}
 	
 	@Test
