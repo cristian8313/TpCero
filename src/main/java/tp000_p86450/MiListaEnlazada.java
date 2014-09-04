@@ -22,12 +22,12 @@ public class MiListaEnlazada {
 	
 	public Object getFirstObject() {
 		try {return this.primero.getObject();} 
-		catch (Exception e) {throw new AssertionError("Queue Empty");}
+		catch (Exception e) {throw new AssertionError("Empty Queue");}
 	}
 	
 	public void removeFirstObject() {
 		try {assignFirstNodo(this.primero.getNext(), this.size--);} 
-		catch (Exception e) {throw new AssertionError("Queue Empty");}
+		catch (Exception e) {throw new AssertionError("Empty Queue");}
 	}
 	
 	private void assignNextObject(Nodo nextNodo, Nodo currentNodo, Object item, int newSizeList) {
